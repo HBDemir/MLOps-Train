@@ -14,5 +14,5 @@ def get_eps_prediction():
     return {
         "ticker": "TECH-AI",
         "predicted_eps": predicted_eps,
-        "version": "v2" # BURAYI v2 YAPTIK
+        "version": "v3" # BURAYI v3 YAPTIK
     }
