@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eps-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eps-api
+  template:
+    metadata:
+      labels:
+        app: eps-api
+    spec:
+      containers:
+      - name: eps-api-container
+        image: eps-api:v2
+        imagePullPolicy: Never # ÖNEMLİ: İmajı internetten indirmeye çalışma, lokaldekini kullan demek.
+        ports:
+        - containerPort: 8080
