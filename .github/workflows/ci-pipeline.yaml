@@ -1,0 +1,23 @@
+name: MLOps CI Pipeline
+
+# Bu pipeline ne zaman çalışacak?
+on:
+  push:
+    branches: [ "main" ] # main branch'ine her kod itildiğinde (push)
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # GitHub'ın bize vereceği bedava sunucu
+
+    steps:
+    # 1. Adım: GitHub sunucusuna repodaki kodlarımızı indir
+    - name: Kodu Cek (Checkout)
+      uses: actions/checkout@v4
+
+    # 2. Adım: Klasördeki Dockerfile'ı kullanarak imajı derlemeyi dene
+    - name: Docker Imajini Derle
+      run: docker build -t eps-api:test-build .
+      
+    # 3. Adım: Ufak bir tebrik mesajı :)
+    - name: Basari Mesaji
+      run: echo "Imaj basariyla derlendi! Kodda sorun yok."
